@@ -9,6 +9,7 @@ COPY . .
 ENV CI=false
 ENV GENERATE_SOURCEMAP=false
 ENV SKIP_PREFLIGHT_CHECK=true
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN npm run build
 
