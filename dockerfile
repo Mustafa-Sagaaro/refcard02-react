@@ -1,13 +1,14 @@
-FROM node:20-alpine AS build
+FROM node:18-alpine AS build
 WORKDIR /app
-
-ENV CI=false
-ENV GENERATE_SOURCEMAP=false
 
 COPY package*.json ./
 RUN npm ci
 
 COPY . .
+
+ENV CI=false
+ENV GENERATE_SOURCEMAP=false
+ENV SKIP_PREFLIGHT_CHECK=true
 
 RUN npm run build
 
